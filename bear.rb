@@ -15,6 +15,14 @@ class Bear
     @stomach << fish_name
   end
 
+# a bear can empty its stomach which means that all the fish inside its stomach are removed.
+  def empty_stomach
+    while @stomach.length > 0
+      @stomach.pop
+    end
+    return @stomach
+  end
+
   # method for a bear to roar.
   def roar
     return "ROOAAR!"

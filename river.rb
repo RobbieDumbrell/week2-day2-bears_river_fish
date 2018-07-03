@@ -7,8 +7,8 @@ class River
   def initialize(name)
     @name = name
 
-    # so every time a new River instance is created, there are no fish, but we need to add fish to river via below method
-    @fish_in_river = []   # should hold many fish...
+    # so every time a new River instance is created, there are no fish, but we need to add fish to river via add_fish method
+    @fish_in_river = []
   end
 
   # function to add fish to river, takes an array of fish names
@@ -22,7 +22,7 @@ class River
     @fish_in_river.delete(fish_name)
   end
 
-  # function to count fish in the fish_in_river array
+  # function to count fish in the river.
   def fish_count
     return @fish_in_river.count
   end
