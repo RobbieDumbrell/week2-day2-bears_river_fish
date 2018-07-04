@@ -8,13 +8,13 @@ class TestRiver < MiniTest::Test
   def setup
     @amazon = River.new("Amazon")
 
-    frank = Fish.new("Frank")
-    fred = Fish.new("Fred")
-    francesca = Fish.new("Francesca")
-    finn = Fish.new("Finn")
-    freya = Fish.new("Freya")
-    
-    @amazon.add_fish([frank.name, fred.name, francesca.name, finn.name, freya.name])
+    @frank = Fish.new("Frank")
+    @fred = Fish.new("Fred")
+    @francesca = Fish.new("Francesca")
+    @finn = Fish.new("Finn")
+    @freya = Fish.new("Freya")
+
+    @amazon.add_fish([@frank, @fred, @francesca, @finn, @freya])
   end
 
   # test to check if river has a name.
@@ -24,14 +24,14 @@ class TestRiver < MiniTest::Test
 
   # test to check the river is holding fish with names and add_fish function works
   def test_check_fish_in_river
-    expected_fish = ["Frank", "Fred", "Francesca", "Finn", "Freya"]
+    expected_fish = [@frank, @fred, @francesca, @finn, @freya]
     assert_equal(expected_fish, @amazon.fish_in_river)
   end
 
   # test to check the river can remove a fish if a bear eats it.
   def test_remove_fish_from_river
-    @amazon.remove_fish("Francesca")
-    expected_fish = ["Frank", "Fred", "Finn", "Freya"]
+    @amazon.remove_fish_by_name(@francesca)
+    expected_fish = [@frank, @fred, @finn, @freya]
     assert_equal(expected_fish, @amazon.fish_in_river)
   end
 

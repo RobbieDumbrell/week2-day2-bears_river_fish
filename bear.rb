@@ -11,8 +11,8 @@ class Bear
   end
 
   # a bear should be able to take a fish from the river. It should put the fish name into the bear's stomach.
-  def take_fish(fish_name)
-    @stomach << fish_name
+  def take_fish(fish)
+    @stomach << fish
   end
 
 # a bear can empty its stomach which means that all the fish inside its stomach are removed.

@@ -6,7 +6,6 @@ class River
 
   def initialize(name)
     @name = name
-
     # so every time a new River instance is created, there are no fish, but we need to add fish to river via add_fish method
     @fish_in_river = []
   end
@@ -18,8 +17,8 @@ class River
   end
 
   # function to remove a fish from the river by name.
-  def remove_fish(fish_name)
-    @fish_in_river.delete(fish_name)
+  def remove_fish_by_name(fish)
+    @fish_in_river.delete(fish)
   end
 
   # function to count fish in the river.

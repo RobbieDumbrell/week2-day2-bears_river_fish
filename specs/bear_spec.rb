@@ -10,13 +10,13 @@ class TestBear < MiniTest::Test
 
     @amazon = River.new("Amazon")
 
-    frank = Fish.new("Frank")
-    fred = Fish.new("Fred")
-    francesca = Fish.new("Francesca")
-    finn = Fish.new("Finn")
-    freya = Fish.new("Freya")
+    @frank = Fish.new("Frank")
+    @fred = Fish.new("Fred")
+    @francesca = Fish.new("Francesca")
+    @finn = Fish.new("Finn")
+    @freya = Fish.new("Freya")
 
-    @amazon.add_fish([frank.name, fred.name, francesca.name, finn.name, freya.name])
+    @amazon.add_fish([@frank, @fred, @francesca, @finn, @freya])
   end
 
   # test to check if a bear has a name.
@@ -37,10 +37,10 @@ class TestBear < MiniTest::Test
 
   # test to check if a bear can take a fish from the river. Fish should go into the bear's stomach, and out of the river.
   def test_bear_takes_fish_from_river
-    @barry.take_fish("Fred")
-    @amazon.remove_fish("Fred")
-    assert_equal(["Fred"], @barry.stomach)
-    expected_fish_in_river = ["Frank", "Francesca", "Finn", "Freya"]
+    @barry.take_fish(@fred)
+    @amazon.remove_fish_by_name(@fred)
+    assert_equal([@fred], @barry.stomach)
+    expected_fish_in_river = [@frank, @francesca, @finn, @freya]
     assert_equal(expected_fish_in_river, @amazon.fish_in_river)
   end
 
@@ -52,18 +52,18 @@ class TestBear < MiniTest::Test
 
   # test to see if a food.count method counts the amount of fish in it's stomach
   def test_bear_food_count
-    @barry.take_fish("Fred")
-    @amazon.remove_fish("Fred")
+    @barry.take_fish(@fred)
+    @amazon.remove_fish_by_name(@fred)
     amount_fish_in_stomach = @barry.food_count
     assert_equal(1, amount_fish_in_stomach)
   end
 
   # test to see if empty_stomach method removes all fish from the bear's stomach.
   def test_bear_empty_stomach
-    @barry.take_fish("Fred")
-    @amazon.remove_fish("Fred")
-    @barry.take_fish("Frank")
-    @amazon.remove_fish("Frank")
+    @barry.take_fish(@fred)
+    @amazon.remove_fish_by_name(@fred)
+    @barry.take_fish(@frank)
+    @amazon.remove_fish_by_name(@frank)
     assert_equal(2, @barry.food_count)
 
     @barry.empty_stomach
